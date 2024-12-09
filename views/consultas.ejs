@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+   
+    <title>Consultas</title>
+    <%- include('./templates/head.ejs') %>
+</head>
+<body>
+    <%- include('./templates/header-nav.ejs') %>
+   
+<main class="centrado sombras" style="max-width: 120rem;">
+    <table class="table table-bordered table-striped text-center at-4">
+        <thead>
+            <tr>
+                <th><a href="/consultas/<%= 'idContacto'%>">Id Usuario</a></th>
+                <th><a href="/consultas/<%= 'nombre'%>">Nombre</a></th>
+                <th>Telefono</th>
+                <th>Email</th>
+                <th>Mensaje</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if(resultados.length === 0){ %>
+                <tr>
+                    <td><strong>Aun no hay cargado alumnos!!</strong></td>
+                </tr>
+
+            <% }else { %>
+            <% resultados.forEach((usuario)=>{ %>
+                <tr>
+                    <td> <%= usuario.idContacto %> </td>
+                    <td> <%= usuario.Nombre %> </td>
+                    <td> <%= usuario.Telefono %> </td>
+                    <td> <%= usuario.Email %> </td>
+                    <td> <%= usuario.Mensaje %> </td>
+                    <td>
+                        <a href="/modificar/<%= usuario.idContacto %>" class="btn btn-outline-info">Editar</a>
+                        <a href="/eliminar/<%= usuario.idContacto %>" class="btn btn-outline-danger">Borrar</a>
+
+                    </td>
+                </tr>
+            <% })} %>
+        </tbody>
+    </table>
+
+
+</main>
+
+<%- include('./templates/footer.ejs') %>
+</body>
+</html>
